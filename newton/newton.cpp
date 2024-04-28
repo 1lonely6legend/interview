@@ -1,10 +1,10 @@
 //
 // Created by ogier on 24-4-27.
 //
-#include <cmath>
 #include <iostream>
 #include <cmath>
-#include <iostream>
+#include <iomanip>
+
 using namespace std;
 
 // 计算 f(x) = log10(x) + x^2
@@ -38,7 +38,13 @@ int main() {
   double tor = 1e-5;
   int max_iter = 100;
   double initial = 1.0; // 选择一个合适的初始值
-  double res = newton(tor, max_iter, initial);
-  cout << "Root found at x = " << res << endl;
+  long double res = newton(tor, max_iter, initial);
+  double test = 123.1231123;
+  //这里是输出的格式控制，使用iomanip头文件
+  //这里fixed是使用小数点后面的位数，setprecision是设置小数点后面的位数
+  //如果不使用fixed，那么输出的是有效数字位数
+  cout << setprecision(2) << test << endl;
+  cout << fixed << setprecision(2) << test << endl;
+  cout << "我求得的解为： "<<fixed << setprecision(2) << res << endl;
   return 0;
 }
