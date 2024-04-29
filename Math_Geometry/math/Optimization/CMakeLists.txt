@@ -1,0 +1,14 @@
+file(GLOB SOURCES "*.cpp")
+
+add_executable(binary_test Binary_Solve_Equation.cpp)
+add_executable(golden_test Golden_Solve_Equation.cpp)
+add_executable(gradient_extreme_value_test Gradient_Descent_Extreme_Value.cpp)
+add_executable(gradient_extreme_value_multi_test GradientDescent_Extreme_Value_Multi_Variable.cpp)
+add_executable(gradient_solve_equation_test Gradient_Descent_Solve_Equation.cpp)
+add_executable(lagrange_test Lagrange_Interpolation.cpp)
+add_executable(newton_extreme_value_test Newton_Extreme_Value.cpp)
+add_executable(newton_solve_equation_test Newton_Solve_Equation.cpp)
+add_executable(quadratic_test Quadratic_Solve_Equation.cpp)
+add_executable(simulated_annealing_test Simulated_Annealing.cpp)
+
+
