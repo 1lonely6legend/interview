@@ -39,6 +39,8 @@ double Newton(double x0){
     double x_last=0.1;
     while(abs(x-x_last)>EPS){
         x_last=x;
+        //求解极值时，寻找的是导数为0的点，也就是寻找f'(x)=0的点,
+        //相当于求f'(x)的零点，所以这里的迭代公式是x=x_last-func_prime(x_last)/ func_prime_prime(x_last);
         x=x_last-func_prime(x_last)/ func_prime_prime(x_last);
     }
     return x;
