@@ -6,12 +6,21 @@
 #include <iomanip>
 
 using namespace std;
-
+const double DELTA = 1e-4;
 // 计算 f(x) = log10(x) + x^2
 double f(double x) { return log10(x) + x * x; }
 
 // 导数 df(x) = 1 / (x * log(10)) + 2 * x
 double df(double x) { return 1 / (x * log(10.0)) + 2 * x; }
+
+//使用导数定义求导数
+double f_prime(double x) {
+  //前向差分法，速度快，但是精度不高,误差是O(DELTA)
+  //return (f(x+DELTA)-f(x))/DELTA;
+
+  //中心差分法，速度慢，但也不是显著的负担，但是精度高，误差是O(DELTA^2)
+  return (f(x+DELTA)-f(x-DELTA))/(2*DELTA);
+}
 
 // 牛顿法求解
 double newton(const double tor, const int max_iter, double initial) {
