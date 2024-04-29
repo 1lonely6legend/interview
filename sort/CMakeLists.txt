@@ -1,0 +1,9 @@
+cmake_minimum_required(VERSION 3.28)
+project(interview_problem)
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(quick_sort quick_sort.cpp)
+add_executable(insert_sort insert_sort.cpp)
+add_executable(merge_sort merge_sort.cpp)
+add_executable(pop_sort pop_sort.cpp)
+add_executable(select_sort select_sort.cpp)
