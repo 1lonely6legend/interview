@@ -10,5 +10,6 @@ add_executable(newton_extreme_value_test Newton_Extreme_Value.cpp)
 add_executable(newton_solve_equation_test Newton_Solve_Equation.cpp)
 add_executable(quadratic_test Quadratic_Solve_Equation.cpp)
 add_executable(simulated_annealing_test Simulated_Annealing.cpp)
+add_executable(lhm_newton_test lhm_newton.cpp)
 
 
