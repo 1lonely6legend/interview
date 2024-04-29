@@ -20,6 +20,10 @@ typedef class vec {
       x = v.x;
       y = v.y;
     };
+    vec(const Point &p1, const Point &p2) {
+      x = p2.x - p1.x;
+      y = p2.y - p1.y;
+    }
     vec operator+(const vec &other) {
       return vec(x + other.x, y + other.y);
     };

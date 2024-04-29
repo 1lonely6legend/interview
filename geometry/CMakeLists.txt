@@ -16,4 +16,9 @@ add_executable(aabb_collision_check aabb_collision_check.cpp)
 target_link_libraries(aabb_collision_check Python3::Python Python3::NumPy)
 target_link_libraries(aabb_collision_check OsqpEigen::OsqpEigen)
 
+add_executable(check_convex_polygon.cpp check_convex_polygon.cpp utils.h)
+target_link_libraries(check_convex_polygon.cpp Python3::Python Python3::NumPy)
+target_link_libraries(check_convex_polygon.cpp OsqpEigen::OsqpEigen)
+
 add_executable(coordinate_transformation coordinate_transformation.cpp utils.h)
+
