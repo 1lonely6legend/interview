@@ -41,9 +41,16 @@ void heap_sort(int arr[], int n) {
   for (int i = n / 2 - 1; i >= 0; --i) {
     heapify(arr, n, i);//维护堆的性质
   }
-  //堆排序，每次将堆顶元素和最后一个元素交换，然后维护堆的性质
-  for(int i = n - 1; i > 0; --i) {
+  //堆排序，相当于将堆顶元素（最大值）从堆中取出，放到最后面，然后维护剩下n-1个元素的堆，重复n-1次
+  for (int i = n - 1; i > 0; --i) {
     swap(arr[0], arr[i]);
     heapify(arr, i, 0);
   }
+}
+int main() {
+  int a[] = {3, 5, 6, 536, 236, 25, 25, 2, 5, 4545, 66, 7, 34353};
+  int n = sizeof(a) / sizeof(int);
+  heap_sort(a, n);
+  for (int i = 0; i < n; i++) { cout << a[i] << " "; }
+  return 0;
 }
