@@ -5,13 +5,13 @@
 using namespace std;
 
 class Node {
-public:
-  Node(int x, int y, int index, int cost, int f, Node *pre)
+ public:
+  Node(int x, int y, int index, int cost, int f, Node* pre)
       : x(x), y(y), index(index), cost(cost), f(f), pre(pre){};
   int x, y, index, cost, f;
-  Node *pre;
+  Node* pre;
 };
-string get_path(Node *end) {
+string get_path(Node* end) {
   string res;
   while (end != nullptr) {
     int x = end->x;
@@ -24,22 +24,24 @@ string get_path(Node *end) {
   return res;
 };
 struct cmp {
-  bool operator()(Node *const a, Node *const b) { return a->f > b->f; }
+  bool operator()(Node* const a, Node* const b) { return a->f > b->f; }
 };
-string a_star(const vector<vector<int>> &grid) {
+string a_star(const vector<vector<int>>& grid) {
   const int row = grid.size();
   const int col = grid[0].size();
-  auto H = [row, col](int x, int y) { return row - x + col - y; };
+  auto H = [row, col](int x, int y) {
+    return row - x + col - y;
+  };
   vector<vector<int>> cost_map(row, vector<int>(col, INT_MAX));
-  priority_queue<Node *, vector<Node *>, cmp> pq;
+  priority_queue<Node*, vector<Node*>, cmp> pq;
   int moves[4][2] = {1, 0, 0, 1, -1, 0, 0, -1};
 
-  Node *start = new Node(0, 0, 0, 0, H(0, 0), nullptr);
+  Node* start = new Node(0, 0, 0, 0, H(0, 0), nullptr);
   pq.push(start);
   cost_map[0][0] = 0;
 
   while (!pq.empty()) {
-    Node *cur = pq.top();
+    Node* cur = pq.top();
     pq.pop();
     if (cur->x == row - 1 && cur->y == col - 1) {
       return get_path(cur);

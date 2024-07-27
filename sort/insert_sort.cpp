@@ -4,10 +4,10 @@
 // 时间复杂度：O(n^2),因为每次都是将一个数插入到有序数组中，所以是n^2
 // 空间复杂度：O(1),因为只需要一个临时变量
 // 稳定排序,也就是说如果有两个相等的数，排序后他们的相对位置不会改变
-#include <vector>
 #include <iostream>
+#include <vector>
 using namespace std;
-void insert_sort(vector<int> &v) {
+void insert_sort(vector<int>& v) {
   //从第二个数开始，因为第一个数默认是有序的，也就是最开始的有序数组
   for (int i = 1; i < v.size(); ++i) {
     //取出现在要插入的数

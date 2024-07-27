@@ -4,18 +4,18 @@
 // 时间复杂度：O(n^2),因为每次都是将一个数放在最后面，所以是n^2
 // 空间复杂度：O(1),因为只需要一个临时变量
 // 稳定排序
-#include <vector>
 #include <iostream>
+#include <vector>
 using namespace std;
-void pop_sort(vector<int> &v) {
+void pop_sort(vector<int>& v) {
   int loop = v.size();
-  while(loop--) {
+  while (loop--) {
     //需要从头到尾冒泡n次
-    for(int i = 0; i < v.size() - 1;++i) {
-      if(v[i] > v[i+1]) {
+    for (int i = 0; i < v.size() - 1; ++i) {
+      if (v[i] > v[i + 1]) {
         int temp = v[i];
-        v[i] = v[i+1];
-        v[i+1] = temp;
+        v[i] = v[i + 1];
+        v[i + 1] = temp;
       }
     }
   }

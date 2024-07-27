@@ -9,17 +9,18 @@ using namespace std;
 class Matrix {
  private:
   std::vector<std::vector<int>> data;
+
  public:
   Matrix(int rows, int cols) : data(rows, std::vector<int>(cols, 0)) {}
 
   // 使用列表初始化器构造矩阵
-//  Matrix(std::initializer_list<std::initializer_list<int>> init) {
-//    for (auto &row : init) {
-//      data.push_back(std::vector<int>(row));
-//    }
-//  }
+  //  Matrix(std::initializer_list<std::initializer_list<int>> init) {
+  //    for (auto &row : init) {
+  //      data.push_back(std::vector<int>(row));
+  //    }
+  //  }
   Matrix(vector<vector<int>> init) {
-    for (auto &row : init) {
+    for (auto& row : init) {
       data.push_back(std::vector<int>(row));
     }
   }
@@ -31,9 +32,10 @@ class Matrix {
   size_t cols() const { return rows() ? data[0].size() : 0; }
 
   // 矩阵乘法，矩阵乘法需要三个for循环
-  Matrix operator*(const Matrix &other) const {
+  Matrix operator*(const Matrix& other) const {
     if (cols() != other.rows()) {
-      throw std::invalid_argument("Incompatible dimensions for matrix multiplication");
+      throw std::invalid_argument(
+          "Incompatible dimensions for matrix multiplication");
     }
     Matrix result(rows(), other.cols());
     for (size_t i = 0; i < rows(); ++i) {
@@ -58,8 +60,8 @@ class Matrix {
   }
 
   // 重载 << 操作符以打印矩阵
-  friend std::ostream &operator<<(std::ostream &os, const Matrix &matrix) {
-    for (auto &row : matrix.data) {
+  friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix) {
+    for (auto& row : matrix.data) {
       for (auto elem : row) {
         os << elem << " ";
       }
@@ -69,16 +71,14 @@ class Matrix {
   }
 
   // 提供外部访问data的方法
-  std::vector<int> &operator[](size_t i) { return data[i]; }
+  std::vector<int>& operator[](size_t i) { return data[i]; }
 
-  const std::vector<int> &operator[](size_t i) const { return data[i]; }
+  const std::vector<int>& operator[](size_t i) const { return data[i]; }
 };
 
 int main() {
-  Matrix m1 = {{{1, 2},
-                {3, 4}}};
-  Matrix m2 = {{{5, 6},
-                {7, 8}}};
+  Matrix m1 = {{{1, 2}, {3, 4}}};
+  Matrix m2 = {{{5, 6}, {7, 8}}};
   std::cout << "Matrix m1:" << std::endl << m1 << std::endl;
   std::cout << "Matrix m2:" << std::endl << m2 << std::endl;
   // 矩阵乘法

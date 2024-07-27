@@ -1,17 +1,21 @@
 //
 // Created by ogier on 24-4-27.
 //
-#include <iostream>
 #include <cmath>
 #include <iomanip>
+#include <iostream>
 
 using namespace std;
 const double DELTA = 1e-4;
 // 计算 f(x) = log10(x) + x^2
-double f(double x) { return log10(x) + x * x; }
+double f(double x) {
+  return log10(x) + x * x;
+}
 
 // 导数 df(x) = 1 / (x * log(10)) + 2 * x
-double df(double x) { return 1 / (x * log(10.0)) + 2 * x; }
+double df(double x) {
+  return 1 / (x * log(10.0)) + 2 * x;
+}
 
 //使用导数定义求导数
 double f_prime(double x) {
@@ -19,7 +23,7 @@ double f_prime(double x) {
   //return (f(x+DELTA)-f(x))/DELTA;
 
   //中心差分法，速度慢，但也不是显著的负担，但是精度高，误差是O(DELTA^2)
-  return (f(x+DELTA)-f(x-DELTA))/(2*DELTA);
+  return (f(x + DELTA) - f(x - DELTA)) / (2 * DELTA);
 }
 
 // 牛顿法求解
@@ -46,7 +50,7 @@ double newton(const double tor, const int max_iter, double initial) {
 int main() {
   double tor = 1e-5;
   int max_iter = 100;
-  double initial = 1.0; // 选择一个合适的初始值
+  double initial = 1.0;  // 选择一个合适的初始值
   long double res = newton(tor, max_iter, initial);
   double test = 123.1231123;
   //这里是输出的格式控制，使用iomanip头文件

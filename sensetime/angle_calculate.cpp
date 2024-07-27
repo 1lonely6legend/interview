@@ -8,7 +8,7 @@
 #include <vector>
 const float PI = 3.1415926;
 class my_vector {
-public:
+ public:
   my_vector(const float a, const float b) {
     x = a;
     y = b;
@@ -18,7 +18,7 @@ public:
   float y;
 };
 
-float calculate_angle(my_vector &a, my_vector &b) {
+float calculate_angle(my_vector& a, my_vector& b) {
   float angle1 = atan2(a.x, a.y);
   float angle2 = atan2(b.x, b.y);
   float angle = fabs(angle1 - angle2);

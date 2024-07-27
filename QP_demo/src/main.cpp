@@ -5,8 +5,7 @@
 #include <Eigen/Dense>
 #include <iostream>
 
-int main()
-{
+int main(){
     // allocate QP problem matrices and vectores
     Eigen::SparseMatrix<double> hessian(2, 2);      //P: n*n正定矩阵,必须为稀疏矩阵SparseMatrix
     Eigen::VectorXd gradient(2);                    //Q: n*1向量

@@ -1,7 +1,7 @@
 //
 // Created by CHH3213 on 2022/9/12.
 //
-#include<iostream>
+#include <iostream>
 #include <valarray>
 
 using namespace std;
@@ -11,38 +11,37 @@ using namespace std;
 /*
  * 使用牛顿法求函数极值点
  */
-double func(double x){
-    /**
+double func(double x) {
+  /**
      * 构造函数
      * x:自变量
      * return：函数值
      */
-    return x*x-4*x;
+  return x * x - 4 * x;
 }
 
-double func_prime(double x){
-    /**
+double func_prime(double x) {
+  /**
      * 计算函数导数,以导数定义的方式求解
      */
-    return (func(x+DELTA)-func(x-DELTA))/(2*DELTA);
+  return (func(x + DELTA) - func(x - DELTA)) / (2 * DELTA);
 }
-double func_prime_prime(double x){
-    /**
+double func_prime_prime(double x) {
+  /**
      * 计算函数二阶导,以导数定义的方式求解
      */
-    return (func_prime(x+DELTA)-func_prime(x-DELTA))/(2*DELTA);
+  return (func_prime(x + DELTA) - func_prime(x - DELTA)) / (2 * DELTA);
 }
 
-
-double Newton(double x0){
-    double x = x0;
-    double x_last=0.1;
-    while(abs(x-x_last)>EPS){
-        x_last=x;
-        //求解极值时，寻找的是导数为0的点，也就是寻找f'(x)=0的点,
-        //相当于求f'(x)的零点，所以这里的迭代公式是x=x_last-func_prime(x_last)/ func_prime_prime(x_last);
-        x=x_last-func_prime(x_last)/ func_prime_prime(x_last);
-    }
+double Newton(double x0) {
+  double x = x0;
+  double x_last = 0.1;
+  while (abs(x - x_last) > EPS) {
+    x_last = x;
+    //求解极值时，寻找的是导数为0的点，也就是寻找f'(x)=0的点,
+    //相当于求f'(x)的零点，所以这里的迭代公式是x=x_last-func_prime(x_last)/ func_prime_prime(x_last);
+    x = x_last - func_prime(x_last) / func_prime_prime(x_last);
+  }
     return x;
 }
 

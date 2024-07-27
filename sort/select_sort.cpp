@@ -4,10 +4,10 @@
 // 时间复杂度：O(n^2),因为每次都是将一个数放在前面，所以是n^2
 // 空间复杂度：O(1),因为只需要一个临时变量
 // 不稳定排序
-#include <vector>
 #include <iostream>
+#include <vector>
 using namespace std;
-void select_sort(vector<int> &v) {
+void select_sort(vector<int>& v) {
   for (int i = 0; i < v.size(); ++i) {
     int min = i;
     for (int j = i + 1; j < v.size(); ++j) {

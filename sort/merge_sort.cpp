@@ -4,12 +4,13 @@
 // 时间复杂度：O(nlogn),因为每次都是将数组分成两部分，所以是logn,然后每次合并的时间复杂度是n,所以是nlogn
 // 空间复杂度：O(n),因为需要一个临时数组来存放合并后的数组
 // 稳定排序,也就是说如果有两个相等的数，排序后他们的相对位置不会改变
-#include <vector>
 #include <iostream>
+#include <vector>
 using namespace std;
-void merge_sort(vector<int> &v, int left, int right) {
+void merge_sort(vector<int>& v, int left, int right) {
   //如果左右区间重合，只有一个数字，那就不需要排序了直接返回
-  if (left >= right) return;
+  if (left >= right)
+    return;
   int mid = (left + right) / 2;
   //注意使用左闭右开区间，所以这里是mid和mid+1
   merge_sort(v, left, mid);

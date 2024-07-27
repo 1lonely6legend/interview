@@ -4,12 +4,12 @@
 // min f(x_1,x_2,x_3) = (x_1 - 1)^2 + (x_2 - 2)^2 + (x_3 - 3)^2 + (x_1 - x_2)^2 + (x_2 - x_3)^2
 // 约束为无约束
 // 得到矩阵p和向量q,其中p为Hessian矩阵,q为梯度向量,p = [2 -1 0;-1 3 -1;0 -1 2],q = [-2 -4 -6]
-#include "Eigen/Dense"
-#include "OsqpEigen/OsqpEigen.h"
-#include "iostream"
 #include <Eigen/src/Core/Matrix.h>
 #include <Eigen/src/SparseCore/SparseMatrix.h>
 #include <OsqpEigen/Solver.hpp>
+#include "Eigen/Dense"
+#include "OsqpEigen/OsqpEigen.h"
+#include "iostream"
 
 int main() {
   Eigen::SparseMatrix<double> hessian(3, 3);

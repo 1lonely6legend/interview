@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 class my_vector {
-public:
+ public:
   my_vector(const float a, const float b) {
     x = a;
     y = b;
@@ -17,13 +17,15 @@ public:
   float y;
 };
 // 点乘，物理意义是向量a在向量b上的投影长度乘以向量b的模长
-float dot_product(my_vector &a, my_vector &b) { return a.x * b.x + a.y * b.y; }
+float dot_product(my_vector& a, my_vector& b) {
+  return a.x * b.x + a.y * b.y;
+}
 // 叉乘，物理意义是向量a和向量b构成的平行四边形的面积，正负代表方向
-float cross_product(my_vector &a, my_vector &b) {
+float cross_product(my_vector& a, my_vector& b) {
   return a.x * b.y - a.y * b.x;
 }
 
-my_vector vector_projection(my_vector &a, my_vector &b) {
+my_vector vector_projection(my_vector& a, my_vector& b) {
   // 计算向量b在向量a上的投影
   float a_length = a.get_length();
   float dot = dot_product(a, b);
@@ -33,7 +35,7 @@ my_vector vector_projection(my_vector &a, my_vector &b) {
   return res;
 }
 
-std::string vector_relation(my_vector &a, my_vector &b) {
+std::string vector_relation(my_vector& a, my_vector& b) {
   // 判断向量a和向量b的关系
   float cross = cross_product(a, b);
   if (cross == 0) {
