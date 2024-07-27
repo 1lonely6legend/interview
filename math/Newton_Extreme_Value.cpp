@@ -5,8 +5,8 @@
 #include <cmath>
 using namespace std;
 
-#define DELTA 1e-4
-#define EPS 1e-6
+constexpr double DELTA = 1e-5;
+constexpr double EPS = 1e-6;
 /*
  * 使用牛顿法求函数极值点 x * x - 4 * x;
  * 类似求方程的根，只不过这里是求函数的极值点，也就是导数的零点
