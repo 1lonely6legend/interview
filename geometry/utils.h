@@ -7,6 +7,7 @@
 #include <cmath>
 typedef struct point {
   double x, y;
+  point() = default;
   point(const double x, const double y): x(x), y(y) {
   };
 } Point;

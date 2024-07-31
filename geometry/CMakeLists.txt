@@ -12,8 +12,8 @@ add_executable(vector_angle_projection_position vector_angle_projection_position
 target_link_libraries(vector_angle_projection_position Python3::Python Python3::NumPy)
 target_link_libraries(vector_angle_projection_position OsqpEigen::OsqpEigen)
 
-
 add_executable(aabb_collision_check aabb_collision_check.cpp)
-
 target_link_libraries(aabb_collision_check Python3::Python Python3::NumPy)
 target_link_libraries(aabb_collision_check OsqpEigen::OsqpEigen)
+
+add_executable(coordinate_transformation coordinate_transformation.cpp utils.h)
