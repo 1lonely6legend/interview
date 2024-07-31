@@ -22,10 +22,14 @@
 - 向量投影、位置关系、夹角计算
 - AABB包围盒碰撞检测
 - 坐标系旋转矩阵
-- 判断给定多变型是否为凸多边形
+- 使用点乘判断多边形凸性
 
 ## search
 
 - a*算法
 - dijkstra算法
 - 有向加权图最短路径
+
+## osqp_demo
+
+参考：https://github.com/xinchu911/osqp_demo
