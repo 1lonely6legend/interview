@@ -4,11 +4,18 @@
 #include <iostream>
 #include <cmath>
 #include "utils.h"
+#include "matplotlibcpp.h"
+namespace plt = matplotlibcpp;
 using namespace std;
 int main() {
   //1.计算向量投影，2.判断点与向量的位置关系，3.计算向量夹角
   Vector v1{0, 1}, v2{1, 1};
   Point p1{-1, 1};
+  //可视化向量v1,v2 以及点p1
+  plt::plot({0, v1.x}, {0, v1.y}, "r-");
+  plt::plot({0, v2.x}, {0, v2.y}, "b-");
+  plt::plot({p1.x}, {p1.y}, "go");
+  plt::show();
   //1. 计算向量v1在向量v2上的投影v3
   double dot_res = v1.dot_product(v2); //计算点积，v1*v2=|v1|*|v2|*cos(θ)
   double v2_norm = v2.norm(); //计算向量v2的模长
