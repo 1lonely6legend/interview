@@ -4,42 +4,43 @@
 
 #ifndef UTILS_H
 #define UTILS_H
+#include <iostream>
 #include <cmath>
-typedef struct point {
+struct Point {
   double x, y;
-  point() = default;
-  point(const double x, const double y): x(x), y(y) {
+  Point() = default;
+  Point(const double x, const double y): x(x), y(y) {
   };
-} Point;
-typedef class vec {
+};
+class Vector {
   public:
     double x, y;
-    vec(const double x, const double y): x(x), y(y) {
+    Vector(const double x, const double y): x(x), y(y) {
     };
-    vec(const vec &v) {
+    Vector(const Vector &v) {
       x = v.x;
       y = v.y;
     };
-    vec(const Point &p1, const Point &p2) {
+    Vector(const Point &p1, const Point &p2) {
       x = p2.x - p1.x;
       y = p2.y - p1.y;
     }
-    vec operator+(const vec &other) {
-      return vec(x + other.x, y + other.y);
+    Vector operator+(const Vector &other) const {
+      return Vector(x + other.x, y + other.y);
     };
-    vec operator-(const vec &other) {
-      return vec(x - other.x, y - other.y);
+    Vector operator-(const Vector &other) const {
+      return Vector(x - other.x, y - other.y);
     };
-    vec operator*(const double &k) {
-      return vec(x * k, y * k);
+    Vector operator*(const double &k) const {
+      return Vector(x * k, y * k);
     };
-    double dot_product(const vec &other) {
+    double dot_product(const Vector &other) const {
       return x * other.x + y * other.y;
     };
-    double cross_product(const vec &other) {
+    double cross_product(const Vector &other) const {
       return x * other.y - y * other.x;
     };
-    double norm() {
+    double norm() const {
       return sqrt(x * x + y * y);
     };
     void normalize() {
@@ -47,5 +48,9 @@ typedef class vec {
       x /= length;
       y /= length;
     };
-} Vector;
+    friend std::ostream &operator<<(std::ostream &os, const Vector &v) {
+      os << "vecotr: " << '(' << v.x << ", " << v.y << ')' << std::endl;
+      return os;
+    }
+};
 #endif //UTILS_H

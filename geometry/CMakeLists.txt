@@ -21,4 +21,5 @@ target_link_libraries(check_convex_polygon.cpp Python3::Python Python3::NumPy)
 target_link_libraries(check_convex_polygon.cpp OsqpEigen::OsqpEigen)
 
 add_executable(coordinate_transformation coordinate_transformation.cpp utils.h)
+add_executable(calculate_curvature calculate_curvature.cpp utils.h)
 
