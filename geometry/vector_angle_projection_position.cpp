@@ -44,9 +44,27 @@ double disBetweenPointVector(const Vector &v, const Point &p) {
   return fabs(vp.cross_product(v)) / v.norm();
 }
 
+Point IntersectionPoint(const LineSeg &l1, const LineSeg &l2) {
+  //5.计算两条线段的交点
+  //设l1的起点为p1，终点为p2，l2的起点为p3，终点为p4，l1的方程为p1 + t1*(p2-p1),l2的方程为p3 + t2*(p4-p3)，也就是起点+ t*向量
+  //联立方程，得到t1和t2，然后代入l1的方程，得到交点
+  Vector v1{l1.pstart, l1.pend}, v2{l2.pstart, l2.pend};
+  Vector v3{l1.pstart, l2.pstart};
+  //t1 = (v3 x v2) / (v1 x v2),求出t1，带入l1的方程即可得到交点
+  double t1 = v3.cross_product(v2) / v1.cross_product(v2);
+  //判断点是否在线段上，只需要判断t1和t2是否在0-1之间即可
+  double t2 = v3.cross_product(v1) / v1.cross_product(v2);
+  if (t1 < 0 || t1 > 1 || t2 < 0 || t2 > 1) {
+    cout << "no intersection point" << endl;
+    return Point{0, 0};
+  }
+  return Point{l1.pstart.x + t1 * v1.x, l1.pstart.y + t1 * v1.y};
+}
+
 int main() {
   Vector v1{0, 1}, v2{1, 1};
   Point p1{-1, 1}, p2{-1, 0}, p3{-1, -1};
+  LineSeg l1({0, 1}, {1, 0}), l2({0, 0}, {1, 1});
   //可视化向量v1,v2 以及点p1
   plt::plot({0, v1.x}, {0, v1.y}, "r-");
   plt::plot({0, v2.x}, {0, v2.y}, "b-");
@@ -61,6 +79,8 @@ int main() {
   cout << "degree between v1 and v2: " << angleBetweenVectors(v1, v2) / M_PI * 180 << endl;
   //计算点p1到向量v1的距离
   cout << "distance between p1 and v1: " << disBetweenPointVector(v1, p1) << endl;
+  //计算两条线段l1,l2的交点
+  Point res = IntersectionPoint(l1, l2);
   plt::show();
   return 0;
 }

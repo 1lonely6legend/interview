@@ -53,4 +53,13 @@ class Vector {
       return os;
     }
 };
+class LineSeg {
+  public:
+    Point pstart, pend;
+    LineSeg(const Point &p1, const Point &p2): pstart(p1), pend(p2) {
+    };
+    double norm() const {
+      return sqrt(pow((pstart.x - pend.x), 2) + pow((pstart.y - pend.y), 2));
+    }
+};
 #endif //UTILS_H
