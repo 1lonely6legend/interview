@@ -13,7 +13,7 @@ using namespace std;
  * @param n 数组长度
  * @param i 待维护节点的下标
  */
-void heapify(int arr[], int n, int i) {
+void heapify(vector<int> &arr, int n, int i) {
   int largest = i;       //假设父节点是最大的
   int lson = i * 2 + 1;  //左孩子
   int rson = i * 2 + 2;  //右孩子
@@ -35,7 +35,7 @@ void heapify(int arr[], int n, int i) {
  * @param arr 存储堆的数组
  * @param n 数组长度
  */
-void heap_sort(int arr[], int n) {
+void heap_sort(vector<int> &arr, int n) {
   //建堆，从最后一个非叶子节点开始，递归的维护堆的性质
   //最后一个节点是n - 1, 所以最后一个非叶子节点是(n-1-1)/2 = n/2-1
   for (int i = n / 2 - 1; i >= 0; --i) {
@@ -48,8 +48,8 @@ void heap_sort(int arr[], int n) {
   }
 }
 int main() {
-  int a[] = {3, 5, 6, 536, 236, 25, 25, 2, 5, 4545, 66, 7, 34353};
-  int n = sizeof(a) / sizeof(int);
+  vector<int> a = {3, 5, 6, 536, 236, 25, 25, 2, 5, 4545, 66, 7, 34353};
+  int n = a.size();
   heap_sort(a, n);
   for (int i = 0; i < n; i++) { cout << a[i] << " "; }
   return 0;
