@@ -7,19 +7,22 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-void merge_sort(vector<int>& v, int left, int right) {
-  //如果左右区间重合，只有一个数字，那就不需要排序了直接返回
+// 归并排序函数，使用左闭右闭的区间 [left, right]
+void merge_sort(vector<int> &v, int left, int right) {
+  // 如果区间内只有一个元素，则无需排序
   if (left >= right)
     return;
-  int mid = (left + right) / 2;
-  //注意使用左闭右开区间，所以这里是mid和mid+1
+  // 计算中间位置
+  int mid = left + (right - left) / 2;
+  // 递归排序左半部分 [left, mid]
   merge_sort(v, left, mid);
+  // 递归排序右半部分 [mid + 1, right]
   merge_sort(v, mid + 1, right);
-  //设置一个临时数组，用来存放合并后的数组
+  // 创建一个临时数组用于合并
   vector<int> temp;
-  //设置两个指针，分别指向两个数组的头部,方便后面比较
+  // 初始化两个指针，分别指向左右两个子数组的起始位置
   int i = left, j = mid + 1;
-  //首先比较两个数组的头部，小的放入临时数组，然后指针后移
+  // 比较两个子数组的元素，将较小的元素放入临时数组
   while (i <= mid && j <= right) {
     if (v[i] < v[j]) {
       temp.push_back(v[i++]);
@@ -27,19 +30,20 @@ void merge_sort(vector<int>& v, int left, int right) {
       temp.push_back(v[j++]);
     }
   }
-  //如果有一个数组已经全部放入临时数组，那么另一个数组剩下的部分直接放入临时数组
+  // 将左半部分剩余的元素放入临时数组
   while (i <= mid) {
     temp.push_back(v[i++]);
   }
-  //同上
+  // 将右半部分剩余的元素放入临时数组
   while (j <= right) {
     temp.push_back(v[j++]);
   }
-  //将临时数组的值放回原数组
-  for (int i = 0; i < temp.size(); i++) {
-    v[left + i] = temp[i];
+  // 将临时数组中的元素复制回原数组的相应位置
+  for (int k = 0; k < temp.size(); k++) {
+    v[left + k] = temp[k];
   }
 }
+
 int main() {
   int a[] = {3, 5, 6, 536, 236, 25, 25, 2, 5, 4545, 66, 7, 34353};
   std::vector<int> v(a, a + sizeof(a) / sizeof(int));
